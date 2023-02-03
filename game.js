@@ -19,6 +19,7 @@ window.requestAnimationFrame(main);
 
 //update the snake and food
 function update() {
+  gameBoard.innerHTML = '';
   updateSnake();
 }
 
