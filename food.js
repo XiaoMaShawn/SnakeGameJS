@@ -1,6 +1,7 @@
 import { onSnake, expandSnake } from "./snake.js";
+import { randomGridPosition } from "./grid.js";
 
-let food = { x: 10, y: 1 };
+let food = getRandomFoodPosition();
 
 //how many grid the snake will grow when hit one food
 const EXPANSION_RATE = 3;
@@ -8,7 +9,7 @@ const EXPANSION_RATE = 3;
 export function update() {
   if (onSnake(food)) {
     expandSnake(EXPANSION_RATE);
-    food = { x: 20, y: 1 };
+    food = getRandomFoodPosition();
   }
 }
 
@@ -19,3 +20,13 @@ export function draw(gameboard) {
   foodElement.classList.add('food');
   gameboard.appendChild(foodElement);
 }
+
+function getRandomFoodPosition() {
+  let newFoodPosition;
+  //when there is no food or the food is on the snake body, get a new one.
+  while (newFoodPosition == null || onSnake(newFoodPosition)) {
+    newFoodPosition = randomGridPosition();
+  }
+  return newFoodPosition;
+}
+

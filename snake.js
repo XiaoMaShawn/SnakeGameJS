@@ -30,6 +30,7 @@ export function expandSnake(amount) {
   newSegments += amount;
 }
 
+//check whether the food position is on the snake
 export function onSnake(position) {
   return snakeBody.some(segment => {
     return equalPositions(segment, position);
