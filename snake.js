@@ -36,6 +36,21 @@ export function onSnake(position) {
     return equalPositions(segment, position);
   });
 }
+export function getSnakeHead() {
+  return snakeBody[0];
+}
+
+export function snakeIntersection() {
+  const inputDirection = getInputDirection();
+  let position = {};
+  position.x = snakeBody[0].x + inputDirection.x;
+  position.y = snakeBody[0].y + inputDirection.y;
+  return (
+    snakeBody.some(segment => {
+      equalPositions(position, segment);
+    })
+  )
+}
 
 function equalPositions(pos1, pos2) {
   return (pos1.x === pos2.x && pos1.y === pos2.y);

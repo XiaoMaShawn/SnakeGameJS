@@ -4,7 +4,7 @@ import { randomGridPosition } from "./grid.js";
 let food = getRandomFoodPosition();
 
 //how many grid the snake will grow when hit one food
-const EXPANSION_RATE = 3;
+const EXPANSION_RATE = 2;
 
 export function update() {
   if (onSnake(food)) {
